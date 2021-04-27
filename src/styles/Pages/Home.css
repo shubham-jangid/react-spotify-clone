@@ -3,6 +3,10 @@
   padding: 10px;
   overflow-y: auto;
   -ms-overflow-style: none;
+  background: #1e1e1e;
+  background: -webkit-linear-gradient(top, #1e1e1e, #121212);
+  background: -moz-linear-gradient(top, #1e1e1e, #121212);
+  background: linear-gradient(to bottom, #1e1e1e, #121212);
 }
 
 .home::-webkit-scrollbar {

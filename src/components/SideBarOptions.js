@@ -5,7 +5,11 @@ export default function SideBarOptions({ Icon, title }) {
   return (
     <div className="sideBarOption">
       {Icon && <Icon className="sideBarOption_icon" />}
-      {Icon ? <span>{title}</span> : <p>{title}</p>}
+      {Icon ? (
+        <span className="title">{title}</span>
+      ) : (
+        <p className="title">{title}</p>
+      )}
     </div>
   );
 }
