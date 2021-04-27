@@ -1,0 +1,12 @@
+.topBar {
+  /* position: fixed; */
+  /* top: 0; */
+  /* right: 0; */
+  height: 60px;
+  width: 100%;
+}
+
+.topBar__button {
+  width: 100px;
+  border-radius: 50px;
+}

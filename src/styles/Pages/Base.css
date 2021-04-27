@@ -1,0 +1,6 @@
+.base {
+  display: grid;
+  grid-template-columns: 345px 1fr;
+  grid-template-rows: 60px;
+  height: 100vh;
+}

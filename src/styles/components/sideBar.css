@@ -1,0 +1,11 @@
+.sideBar {
+  background-color: black;
+  padding: 20px;
+  grid-row: 1 / 3;
+}
+
+.sideBar_logo {
+  object-fit: contain;
+  height: 40px;
+  margin: 10px 10px 20px;
+}
