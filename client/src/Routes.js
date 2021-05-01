@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import React from "react";
 
 export default function Routes() {
+  console.log("re render");
   return (
     <BrowserRouter>
       <Switch>
