@@ -1,0 +1,11 @@
+.userWidget {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 30px;
+  /* background-color: ; */
+}
+
+.userName {
+  margin-left: 10px;
+}

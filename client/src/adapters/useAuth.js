@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
-import { useStateValues } from "../contexts/StateProvider";
+// import React, { useEffect } from "react";
+// import { useStateValues } from "../contexts/stateProvider";
 
-export default function useAuth({ code }) {
-  // const [{ token }, dispatch] = useStateValues();
+// export default function useAuth({ code }) {
+//   // const [{ token }, dispatch] = useStateValues();
 
-  console.log(code);
-  useEffect(() => {
-    console.log(code);
-  }, [code]);
-  return <div></div>;
-}
+//   console.log(code);
+//   useEffect(() => {
+//     console.log(code);
+//   }, [code]);
+//   return <div></div>;
+// }
