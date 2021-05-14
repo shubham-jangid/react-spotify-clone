@@ -1,5 +1,6 @@
 export const initialState = {
-  user: null,
+  userName: "",
+  email: "",
   user_playlists: [],
   spotify: null,
   discover_weekly: null,
@@ -9,15 +10,16 @@ export const initialState = {
   code: null,
   access_token: null,
   refresh_token: null,
+  isTokenSet: false,
 };
 
 const reducer = (state, action) => {
   console.log(action.type);
   switch (action.type) {
-    case "SET_USER":
+    case "SET_USER_NAME":
       return {
         ...state,
-        user: action.user,
+        userName: action.userName,
       };
 
     case "SET_ACCESS_TOKEN":
@@ -39,6 +41,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         user_playlists: action.user_playlists,
+      };
+    case "IS_TOKEN_SET":
+      return {
+        ...state,
+        isTokenSet: action.isTokenSet,
       };
     default:
       return state;

@@ -1,7 +1,7 @@
 import React from "react";
-import Login from "../Login";
+import Login from "./Login";
 import UserWidget from "./TopBarUserWidget";
-import { useStateValues } from "../../contexts/stateProvider";
+import { useStateValues } from "../../contexts/StateProvider";
 import "./TopBar.styles.css";
 
 export default function TopBar() {

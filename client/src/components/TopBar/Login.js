@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { useStateValues } from "../contexts/stateProvider";
+import { useStateValues } from "../../contexts/StateProvider";
 import axios from "axios";
-import { spotifyApi } from "../adapters/spotifyApi";
+import { spotifyApi } from "../../adapters/spotifyApi";
 
 const scopes = [
   "user-read-currently-playing",
@@ -45,7 +45,7 @@ export default function Login() {
         code: urlCode,
       });
     }
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     const token = localStorage.getItem("access_token");
@@ -81,7 +81,7 @@ export default function Login() {
           alert(error);
         });
     }
-  }, [code, access_token]);
+  }, [code, access_token]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return <a href={AUTH_URL}> LOGIN</a>;
 }

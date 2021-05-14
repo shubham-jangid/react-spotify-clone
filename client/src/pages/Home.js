@@ -1,6 +1,6 @@
 import React from "react";
 import Base from "./Base";
-import "../styles/Pages/Home.css";
+import "./Home.css";
 
 export default function Home() {
   const home = () => {
