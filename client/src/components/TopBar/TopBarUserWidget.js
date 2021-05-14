@@ -8,7 +8,6 @@ export default function TopBarUserWidget() {
   const [{ userName, isTokenSet, access_token }, dispatch] = useStateValues();
   useEffect(() => {
     if (!isTokenSet) return;
-    console.log("users");
 
     spotifyApi
       .getMe()

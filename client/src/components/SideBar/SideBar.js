@@ -17,7 +17,6 @@ export default function SideBar() {
     spotifyApi
       .getUserPlaylists()
       .then((playlists) => {
-        console.log(playlists.items);
         dispatch({
           type: "SET_USER_PLAYLISTS",
           user_playlists: playlists.items,
@@ -38,8 +37,8 @@ export default function SideBar() {
       <SideBarOptions title="Create Playlist" Icon={PlaylistAddIcon} />
       <SideBarOptions title="Liked Songs" Icon={FavoriteIcon} />
       <hr />
-      {user_playlists?.map((playlist) => (
-        <SideBarOptions title={playlist.name} id={playlist.id} />
+      {user_playlists?.map((playlist, index) => (
+        <SideBarOptions title={playlist.name} id={playlist.id} index={index} />
       ))}
     </div>
   );

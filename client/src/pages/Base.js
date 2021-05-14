@@ -5,15 +5,16 @@ import Footer from "../components/Footer/Footer";
 import { TopBar } from "../components/TopBar/";
 import { useStateValues } from "../contexts/StateProvider";
 import { spotifyApi } from "../adapters/spotifyApi";
+import { setRequestHeader } from "../adapters/axiosInstance";
 
 export default function Base({ children }) {
   const [{ access_token }, dispatch] = useStateValues();
 
   useEffect(() => {
     if (!access_token) return;
-    console.log("token");
-
     spotifyApi.setAccessToken(access_token);
+    setRequestHeader(access_token);
+
     dispatch({
       type: "IS_TOKEN_SET",
       isTokenSet: true,
