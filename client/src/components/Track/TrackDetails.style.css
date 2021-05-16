@@ -1,0 +1,20 @@
+.track_details {
+  display: flex;
+}
+
+.track_details_main {
+  display: flex;
+}
+
+.track_details_main > img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.track_details_main__title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+}

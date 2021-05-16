@@ -1,46 +1,67 @@
 import React, { useState, useEffect } from "react";
 import Base from "./Base";
 import { useParams } from "react-router-dom";
-import { spotifyApi } from "../adapters/spotifyApi";
-import axios from "axios";
-import {
-  // getPlaylistCoverImage,
-  getPlaylistDetails,
-} from "../adapters/playlistRequrest";
+import { getPlaylistDetails } from "../adapters/playlistRequrest";
+import "./playlistBody.styles.css";
+import TrackDetails from "../components/Track/TrackDetails";
+import moment from "moment";
 
 export default function PlaylistBody() {
   const [playlistCoverImageUrl, setPlaylistCoverImageUrl] = useState("");
-  const [playlistTrack, setPlaylistTracks] = useState([]);
+  const [playlistInfo, setplaylistInfo] = useState([]);
 
   const playlist_id = useParams().id;
 
   useEffect(() => {
     if (!playlist_id) return;
-    // if (!isTokenSet) return;
-    // axios
-    //   .all([getPlaylistCoverImage(playlist_id), getPlaylistTrack(playlist_id)])
     getPlaylistDetails(playlist_id)
       .then((res) => {
-        console.log(res);
-
         setPlaylistCoverImageUrl(res.images[0].url);
-        getPlaylistDetails(res.tracks.items);
+        setplaylistInfo(res);
       })
 
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        console.log(err);
       });
   }, [playlist_id]);
 
   function playlist() {
     return (
       <div className="playlist_body">
-        <div className="playlist_body_info">
-          <div className="playlist_body_info_image">
+        <div className="playlist_info">
+          <div className="playlist_info_image">
             <img src={playlistCoverImageUrl} alt="cover " />
           </div>
-          <h5>playlist</h5>
-          <div className="playlist_body_info_title">playlsit title</div>
+          <div className="playlist_descption">
+            <h5 className="type">{playlistInfo.type}</h5>
+            <h1 className="playlist_name">{playlistInfo.name}</h1>
+            <h4 className="playlist_owner">
+              {playlistInfo?.owner?.display_name}
+            </h4>
+          </div>
+        </div>
+        <div className="play_button_area"></div>
+        <div className="playlists">
+          <div className="playlists_details_1">
+            <div className="index">#</div>
+            <div className="title">TITLE</div>
+            <div className="album">ALBUM</div>
+            <div className="date_added">DATE ADDED</div>
+            <div className="duration">DURATION</div>
+          </div>
+          {playlistInfo?.tracks?.items?.map((item, index) => {
+            return (
+              <TrackDetails
+                index={index + 1}
+                trackId={item.track.id}
+                title={item.track.name}
+                album={item.track.album.name}
+                date_added={moment(item.added_at).format("MMM Do YY")}
+                duration={(item.track.duration_ms / 60000).toFixed(2)}
+                key={index}
+              />
+            );
+          })}
         </div>
       </div>
     );

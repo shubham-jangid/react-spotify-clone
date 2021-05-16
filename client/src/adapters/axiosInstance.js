@@ -1,13 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "https://api.spotify.com/",
-});
-
-instance.interceptors.request.use((req) => {
-  console.log(`${req.method} ${req.url}`);
-  // Important: request interceptors **must** return the request.
-  return req;
+  baseURL: "https://api.spotify.com/v1",
 });
 
 export const setRequestHeader = (token) => {

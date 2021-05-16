@@ -3,13 +3,11 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const SpotifyWebApi = require("spotify-web-api-node");
 const app = express();
-
 require("dotenv").config();
 
 app.use(cors());
 app.use(bodyParser());
 
-console.log(process.env.REDIRECT_URL);
 app.post("/login", (req, res) => {
   const code = req.body.code;
   const credentials = {
@@ -17,7 +15,6 @@ app.post("/login", (req, res) => {
     clientSecret: process.env.SECRETE,
     redirectUri: process.env.REDIRECT_URL,
   };
-
   const spotifyApi = new SpotifyWebApi(credentials);
 
   spotifyApi
@@ -29,9 +26,9 @@ app.post("/login", (req, res) => {
         refresh_token: data.body.refresh_token,
       });
     })
-    .catch((error) => {
+    .catch((err) => {
       res.sendStatus(400);
-      console.log(error);
+      console.log(err);
     });
 });
 

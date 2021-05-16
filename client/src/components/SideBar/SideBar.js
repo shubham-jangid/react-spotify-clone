@@ -6,24 +6,28 @@ import LibraryMusicIcon from "@material-ui/icons/LibraryMusic";
 import SideBarOptions from "./SideBarOptions";
 import PlaylistAddIcon from "@material-ui/icons/PlaylistAdd";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import { spotifyApi } from "../../adapters/spotifyApi";
+import { getUserPlaylists } from "../../adapters/userDetails";
 import "./sideBar.styles.css";
 import { useStateValues } from "../../contexts/StateProvider";
 
 export default function SideBar() {
-  const [{ user_playlists, isTokenSet }, dispatch] = useStateValues();
+  const [
+    { user_playlists, isTokenSet, access_token },
+    dispatch,
+  ] = useStateValues();
+
   useEffect(() => {
-    if (!isTokenSet) return;
-    spotifyApi
-      .getUserPlaylists()
+    if (!access_token) return;
+
+    getUserPlaylists()
       .then((playlists) => {
         dispatch({
           type: "SET_USER_PLAYLISTS",
           user_playlists: playlists.items,
         });
       })
-      .catch((error) => {
-        console.log(error.response);
+      .catch((err) => {
+        console.log(err);
       });
   }, [isTokenSet]);
 
@@ -38,7 +42,7 @@ export default function SideBar() {
       <SideBarOptions title="Liked Songs" Icon={FavoriteIcon} />
       <hr />
       {user_playlists?.map((playlist, index) => (
-        <SideBarOptions title={playlist.name} id={playlist.id} index={index} />
+        <SideBarOptions title={playlist.name} id={playlist.id} key={index} />
       ))}
     </div>
   );
