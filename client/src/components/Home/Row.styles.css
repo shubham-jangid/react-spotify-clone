@@ -1,0 +1,37 @@
+.row {
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  overflow-x: auto;
+  /* background-image: linear-gradient(rgba(0, 0, 0, 0.6) 0, #101010 100%); */
+}
+
+.inner_row {
+  display: flex;
+  flex-direction: row;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin-right: 10px;
+  background: #181818;
+}
+
+.card > img {
+  height: 150px;
+  width: 150px;
+  object-fit: contain;
+}
+
+.row_title {
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.card_title {
+  font-size: 16px;
+  color: #fff;
+  font-weight: 700;
+}
