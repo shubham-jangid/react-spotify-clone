@@ -9,6 +9,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import { getUserPlaylists } from "../../adapters/userDetails";
 import "./sideBar.styles.css";
 import { useStateValues } from "../../contexts/StateProvider";
+import { Link } from "react-router-dom";
 
 export default function SideBar() {
   const [
@@ -34,7 +35,9 @@ export default function SideBar() {
   return (
     <div className="sideBar">
       <img className="sideBar_logo" src={`${logo}`} alt="logo" />
-      <SideBarOptions title="Home" Icon={HomeIcon} />
+      <Link to="/">
+        <SideBarOptions title="Home" Icon={HomeIcon} />
+      </Link>
       <SideBarOptions title="Search" Icon={SearchIcon} />
       <SideBarOptions title="Your Livrary" Icon={LibraryMusicIcon} />
       <br />

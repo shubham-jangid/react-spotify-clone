@@ -32,6 +32,8 @@ export default function TopBar() {
             type: "SET_REFRESH_TOKEN",
             refresh_token: res.refresh_token,
           });
+          window.location = "/";
+
           localStorage.setItem("access_token", res.access_token);
           localStorage.setItem("refresh_token", res.refresh_token);
         })
