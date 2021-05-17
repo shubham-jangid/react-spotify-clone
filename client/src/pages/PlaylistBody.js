@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { getPlaylistDetails } from "../adapters/playlistRequrest";
 import "./playlistBody.styles.css";
 import TrackDetails from "../components/Track/TrackDetails";
+import PlayCircleFilledWhiteIcon from "@material-ui/icons/PlayCircleFilledWhite";
 import moment from "moment";
 
 export default function PlaylistBody() {
@@ -40,7 +41,11 @@ export default function PlaylistBody() {
             </h4>
           </div>
         </div>
-        <div className="play_button_area"></div>
+        <div className="play_all">
+          <div className="play_button_area">
+            <PlayCircleFilledWhiteIcon className="play_button" />
+          </div>
+        </div>
         <div className="playlists">
           <div className="playlists_details_1">
             <div className="index">#</div>

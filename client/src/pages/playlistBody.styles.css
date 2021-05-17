@@ -13,7 +13,7 @@
   background-image: linear-gradient(transparent 0, rgba(0, 0, 0, 0.5) 100%);
   display: flex;
   align-items: center;
-  padding: 32px;
+  padding: 10px 32px;
 }
 
 .playlist_info_image > img {
@@ -39,15 +39,17 @@
 .playlist_descption > * {
   color: #fff;
 }
-.play_button_area {
+.play_all {
   background-color: rgb(64, 152, 160);
   background-image: linear-gradient(rgba(0, 0, 0, 0.6) 0, #121212 100%);
   height: 232px;
   position: relative;
+  padding-top: 40px;
+  padding-left: 40px;
 }
 .playlists {
   padding: 32px;
-  transform: translateY(-200px);
+  transform: translateY(-150px);
 }
 .playlists_details {
   display: grid;
@@ -85,4 +87,24 @@
 .playlists_details:hover {
   background-color: #80808066;
   border-radius: 2px;
+}
+
+.play_button {
+  transform: scale(3);
+}
+
+.play_button_area {
+  background-color: white;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.play_button:hover {
+  transform: scale(3.2);
+}
+
+.play_button > path {
+  color: green;
 }

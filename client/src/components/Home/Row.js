@@ -14,8 +14,6 @@ export default function Row({ title, url }) {
     if (!access_token) return;
     getSongs({ url })
       .then((songs) => {
-        console.log(songs);
-
         setSongs(songs);
       })
       .catch((err) => {
@@ -30,8 +28,8 @@ export default function Row({ title, url }) {
       <div className="inner_row">
         {songs?.map((song, index) => {
           return (
-            <Link to={`/playlist/${song.id}`} id={song.id}>
-              <div className="card" id={song?.id}>
+            <Link to={`/playlist/${song.id}`} id={song.id} key={index}>
+              <div className="card">
                 <img src={song?.images[0]?.url} alt="dfljk" />
                 <div className="card_title">{song?.name}</div>
                 <div className="card_description">{song?.description}</div>
