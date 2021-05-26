@@ -10,16 +10,16 @@ import { getUserPlaylists } from "../../adapters/userDetails";
 import "./sideBar.styles.css";
 import { useStateValues } from "../../contexts/StateProvider";
 import { Link } from "react-router-dom";
-
+import { setRequestHeader } from "../../adapters/axiosInstance";
+import useAuth from "../../adapters/useAuth";
+const code = new URLSearchParams(window.location.search).get("code");
 export default function SideBar() {
-  const [
-    { user_playlists, isTokenSet, access_token },
-    dispatch,
-  ] = useStateValues();
+  useAuth(code);
+  const [{ user_playlists, access_token }, dispatch] = useStateValues();
 
   useEffect(() => {
     if (!access_token) return;
-
+    setRequestHeader(access_token);
     getUserPlaylists()
       .then((playlists) => {
         dispatch({
@@ -30,7 +30,7 @@ export default function SideBar() {
       .catch((err) => {
         console.log(err);
       });
-  }, [isTokenSet]);
+  }, [access_token, JSON.stringify(user_playlists)]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="sideBar">

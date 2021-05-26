@@ -1,7 +1,6 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Home from "./pages/Home";
-
 import React from "react";
+import Home from "./pages/Home";
 import PlaylistBody from "./pages/PlaylistBody";
 
 export default function Routes() {

@@ -16,7 +16,7 @@ export default function Base({ children }) {
       type: "IS_TOKEN_SET",
       isTokenSet: true,
     });
-  }, [access_token]);
+  }, [access_token]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="base">

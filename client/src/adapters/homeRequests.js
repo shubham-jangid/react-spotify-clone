@@ -4,7 +4,6 @@ export function getSongs({ url }) {
   return axios
     .get(`${url}?limit=20`)
     .then((res) => {
-      console.log(res);
       return res.data.playlists.items;
     })
     .catch((err) => {

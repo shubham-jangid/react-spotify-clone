@@ -7,7 +7,7 @@ import "./TopBarUserWidget.styles.css";
 import getUserProfile from "../../adapters/userDetails";
 
 export default function TopBarUserWidget() {
-  const [{ userName, isTokenSet, access_token }, dispatch] = useStateValues();
+  const [{ userName, access_token }, dispatch] = useStateValues();
   const [isOpen, setOpen] = useState(false);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export default function TopBarUserWidget() {
       .catch((err) => {
         console.log(err.response);
       });
-  }, [access_token, isTokenSet]);
+  }, [access_token]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const toggleDropdown = () => setOpen(!isOpen);
 
@@ -53,5 +53,5 @@ export default function TopBarUserWidget() {
     );
   }
 
-  return dropDown();
+  return access_token && dropDown();
 }

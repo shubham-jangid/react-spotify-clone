@@ -6,25 +6,26 @@ import "./playlistBody.styles.css";
 import TrackDetails from "../components/Track/TrackDetails";
 import PlayCircleFilledWhiteIcon from "@material-ui/icons/PlayCircleFilledWhite";
 import moment from "moment";
+import { useStateValues } from "../contexts/StateProvider";
 
 export default function PlaylistBody() {
   const [playlistCoverImageUrl, setPlaylistCoverImageUrl] = useState("");
   const [playlistInfo, setplaylistInfo] = useState([]);
-
+  const [{ access_token }] = useStateValues();
   const playlist_id = useParams().id;
 
   useEffect(() => {
     if (!playlist_id) return;
+    if (!access_token) return;
     getPlaylistDetails(playlist_id)
       .then((res) => {
         setPlaylistCoverImageUrl(res.images[0].url);
         setplaylistInfo(res);
       })
-
       .catch((err) => {
         console.log(err);
       });
-  }, [playlist_id]);
+  }, [playlist_id, access_token]);
 
   function playlist() {
     return (
@@ -71,5 +72,5 @@ export default function PlaylistBody() {
       </div>
     );
   }
-  return <Base>{playlist()}</Base>;
+  return <Base>{access_token && playlist()}</Base>;
 }

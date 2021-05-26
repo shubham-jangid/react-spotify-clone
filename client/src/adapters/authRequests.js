@@ -1,4 +1,3 @@
-import axios from "axios";
 const scopes = [
   "user-read-currently-playing",
   "user-read-recently-played",
@@ -29,14 +28,3 @@ export const AUTH_URL =
   (scopes ? "&scope=" + encodeURIComponent(scopes) : "") +
   "&redirect_uri=" +
   encodeURIComponent("http://localhost:3000/");
-
-export function login(code) {
-  return axios
-    .post("http://localhost:3001/login", { code })
-    .then((res) => {
-      return res.data;
-    })
-    .catch((err) => {
-      return err;
-    });
-}
