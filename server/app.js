@@ -32,6 +32,30 @@ app.post("/login", (req, res) => {
     });
 });
 
+app.post("/refreshtoken", (req, res) => {
+  const refreshToken = req.body.refresh_token;
+  const credentials = {
+    clientId: process.env.CLIENTID,
+    clientSecret: process.env.SECRETE,
+    redirectUri: process.env.REDIRECT_URL,
+    refreshToken: refreshToken,
+  };
+  const spotifyApi = new SpotifyWebApi(credentials);
+
+  spotifyApi
+    .refreshAccessToken()
+    .then((data) => {
+      res.json({
+        access_token: data.body.access_token,
+        expires_in: data.body.expires_in,
+      });
+    })
+    .catch((err) => {
+      res.sendStatus(400);
+      console.log(err);
+    });
+});
+
 app.listen("3001", () => {
   console.log("on 30001");
 });

@@ -12,15 +12,16 @@ import { useStateValues } from "../../contexts/StateProvider";
 import { Link } from "react-router-dom";
 import { setRequestHeader } from "../../adapters/axiosInstance";
 import useAuth from "../../adapters/useAuth";
+import axios from "axios";
 const code = new URLSearchParams(window.location.search).get("code");
 export default function SideBar() {
   useAuth(code);
-  console.log("sidebar");
 
-  const [{ user_playlists, access_token }, dispatch] = useStateValues();
+  const [
+    { user_playlists, access_token, refresh_token },
+    dispatch,
+  ] = useStateValues();
   useEffect(() => {
-    console.log("sidebar");
-
     if (!access_token) return;
     setRequestHeader(access_token);
     getUserPlaylists()
@@ -31,7 +32,30 @@ export default function SideBar() {
         });
       })
       .catch((err) => {
-        console.log(err);
+        axios
+          .post("http://localhost:3001/refreshtoken", { refresh_token })
+          .then((res) => {
+            dispatch({
+              type: "SET_ACCESS_TOKEN",
+              access_token: res.data.access_token,
+            });
+
+            dispatch({
+              type: "SET_EXPIRES_IN",
+              expires_in: res.data.expires_in,
+            });
+
+            window.history.pushState({}, null, "/");
+            localStorage.setItem("access_token", res.data.access_token);
+            localStorage.setItem("expires_in", res.data.expires_in);
+          })
+          .catch((error) => {
+            console.log(error);
+            window.location = "/";
+            localStorage.removeItem("access_token");
+            localStorage.removeItem("refresh_token");
+            localStorage.removeItem("expires_in");
+          });
       });
   }, [access_token, JSON.stringify(user_playlists)]); // eslint-disable-line react-hooks/exhaustive-deps
 

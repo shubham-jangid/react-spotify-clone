@@ -1,8 +1,8 @@
 import React from "react";
-import Base from "./Base";
+import Base from "../Base/Base";
 import "./Home.css";
-import Row from "../components/Home/Row";
-import { useStateValues } from "../contexts/StateProvider";
+import Row from "../../components/Home/Row";
+import { useStateValues } from "../../contexts/StateProvider";
 
 export default function Home() {
   const [{ access_token }] = useStateValues();

@@ -8,6 +8,5 @@ export function getSongs({ url }) {
     })
     .catch((err) => {
       console.log(err);
-      return err;
     });
 }

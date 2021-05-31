@@ -1,7 +1,8 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import React from "react";
-import Home from "./pages/Home";
-import PlaylistBody from "./pages/PlaylistBody";
+import Home from "./pages/Home/Home";
+import PlaylistBody from "./pages/PlaylistBody/PlaylistBody";
+import SearchBody from "./pages/SearchBody/SearchBody";
 
 export default function Routes() {
   return (
@@ -9,7 +10,7 @@ export default function Routes() {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/playlist/:id" component={PlaylistBody} />
-        <Route path="/search/" component={Home} />
+        <Route path="/search/" component={SearchBody} />
       </Switch>
     </BrowserRouter>
   );

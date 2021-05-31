@@ -10,6 +10,8 @@ export default function Row({ title, url }) {
   const [songs, setSongs] = useState([]);
   const [{ access_token }] = useStateValues();
 
+  console.log(songs);
+
   useEffect(() => {
     if (!access_token) return;
     getSongs({ url })
@@ -18,14 +20,14 @@ export default function Row({ title, url }) {
       })
       .catch((err) => {
         console.log(err);
-        return err;
       });
-  }, [access_token, url]);
+  }, [access_token]);
 
   return (
     <div className="row">
       <h2 className="row_title"> {title}</h2>
       <div className="inner_row">
+        {console.log(songs)}
         {songs?.map((song, index) => {
           return (
             <Link to={`/playlist/${song?.id}`} id={song?.id} key={index}>

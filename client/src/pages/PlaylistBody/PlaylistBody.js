@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import Base from "./Base";
+import Base from "../Base/Base";
 import { useParams } from "react-router-dom";
-import { getPlaylistDetails } from "../adapters/playlistRequrest";
+import { getPlaylistDetails } from "../../adapters/playlistRequrest";
 import "./playlistBody.styles.css";
-import TrackDetails from "../components/Track/TrackDetails";
+import TrackDetails from "../../components/Track/TrackDetails";
 import PlayCircleFilledWhiteIcon from "@material-ui/icons/PlayCircleFilledWhite";
 import moment from "moment";
-import { useStateValues } from "../contexts/StateProvider";
+import { useStateValues } from "../../contexts/StateProvider";
 
 export default function PlaylistBody() {
   const [playlistCoverImageUrl, setPlaylistCoverImageUrl] = useState("");
