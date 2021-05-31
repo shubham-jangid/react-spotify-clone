@@ -10,11 +10,13 @@ export const initialState = {
   code: null,
   access_token: null,
   refresh_token: null,
+  expires_in: null,
   isTokenSet: false,
 };
 
 const reducer = (state, action) => {
-  // console.log(action.type);
+  console.log(action.type);
+  // console.log("jdlfjk");
 
   switch (action.type) {
     case "SET_USER_NAME":
@@ -29,6 +31,8 @@ const reducer = (state, action) => {
         access_token: action.access_token,
       };
     case "SET_REFRESH_TOKEN":
+      // console.log("resesh token set ---");
+
       return {
         ...state,
         refresh_token: action.refresh_token,
@@ -47,6 +51,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         isTokenSet: action.isTokenSet,
+      };
+    case "SET_EXPIRES_IN":
+      return {
+        ...state,
+        expires_in: action.expires_in,
       };
     default:
       return state;

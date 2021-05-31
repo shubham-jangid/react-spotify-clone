@@ -3,7 +3,7 @@ import { useStateValues } from "../../contexts/StateProvider";
 import Player from "../Player/Player";
 import "./footer.styles.css";
 export default function Footer() {
-  const [{ isTokenSet, access_token }] = useStateValues();
+  const [{ access_token }] = useStateValues();
 
   function footer() {
     return (
@@ -19,5 +19,5 @@ export default function Footer() {
       </div>
     );
   }
-  return <>{isTokenSet && access_token ? <Player /> : footer()}</>;
+  return <>{access_token ? <Player /> : footer()}</>;
 }

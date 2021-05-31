@@ -15,9 +15,12 @@ import useAuth from "../../adapters/useAuth";
 const code = new URLSearchParams(window.location.search).get("code");
 export default function SideBar() {
   useAuth(code);
-  const [{ user_playlists, access_token }, dispatch] = useStateValues();
+  console.log("sidebar");
 
+  const [{ user_playlists, access_token }, dispatch] = useStateValues();
   useEffect(() => {
+    console.log("sidebar");
+
     if (!access_token) return;
     setRequestHeader(access_token);
     getUserPlaylists()
@@ -38,7 +41,9 @@ export default function SideBar() {
       <Link to="/">
         <SideBarOptions title="Home" Icon={HomeIcon} />
       </Link>
-      <SideBarOptions title="Search" Icon={SearchIcon} />
+      <Link to="/search">
+        <SideBarOptions title="Search" Icon={SearchIcon} />
+      </Link>
       <SideBarOptions title="Your Livrary" Icon={LibraryMusicIcon} />
       <br />
       <SideBarOptions title="Create Playlist" Icon={PlaylistAddIcon} />

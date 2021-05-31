@@ -34,6 +34,7 @@ export default function TopBarUserWidget() {
     window.location = "/";
     localStorage.removeItem("access_token");
     localStorage.removeItem("refresh_token");
+    localStorage.removeItem("expires_in");
   }
 
   function dropDown() {
