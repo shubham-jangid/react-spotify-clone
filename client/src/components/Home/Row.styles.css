@@ -10,7 +10,7 @@
 .inner_row {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
 }
 .card {
   display: flex;
@@ -25,6 +25,10 @@
   height: 150px;
   width: 150px;
   object-fit: contain;
+  margin-bottom: 10px;
+}
+.artistsImg {
+  border-radius: 50%;
 }
 
 .row_title {

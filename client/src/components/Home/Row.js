@@ -5,6 +5,7 @@ import "./Row.styles.css";
 import { getSongs } from "../../adapters/homeRequests";
 import { useStateValues } from "../../contexts/StateProvider";
 import { Link } from "react-router-dom";
+import axios from "../../adapters/axiosInstance";
 
 export default function Row({ title, url }) {
   const [songs, setSongs] = useState([]);
@@ -14,8 +15,11 @@ export default function Row({ title, url }) {
 
   useEffect(() => {
     if (!access_token) return;
+    if (!url) return;
     getSongs({ url })
       .then((songs) => {
+        console.log(songs);
+
         setSongs(songs);
       })
       .catch((err) => {

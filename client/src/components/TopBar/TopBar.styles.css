@@ -3,8 +3,15 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
+  padding-left: 60px;
   z-index: 2;
+}
+
+.topBar_buttons {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
 
 .topBar__button {

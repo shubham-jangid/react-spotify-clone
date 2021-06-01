@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import SideBar from "../../components/SideBar/SideBar";
 import "./Base.css";
 import Footer from "../../components/Footer/Footer";
-import { TopBar } from "../../components/TopBar/";
 import { useStateValues } from "../../contexts/StateProvider";
 import { setRequestHeader } from "../../adapters/axiosInstance";
 
