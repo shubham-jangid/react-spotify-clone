@@ -7,6 +7,7 @@ import TrackDetails from "../../components/Track/TrackDetails";
 import PlayCircleFilledWhiteIcon from "@material-ui/icons/PlayCircleFilledWhite";
 import moment from "moment";
 import { useStateValues } from "../../contexts/StateProvider";
+import { TopBar } from "../../components/TopBar";
 
 export default function PlaylistBody() {
   const [playlistCoverImageUrl, setPlaylistCoverImageUrl] = useState("");
@@ -72,5 +73,11 @@ export default function PlaylistBody() {
       </div>
     );
   }
-  return <Base>{access_token && playlist()}</Base>;
+  return (
+    <Base>
+      <TopBar />
+
+      {access_token && playlist()}
+    </Base>
+  );
 }

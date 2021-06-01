@@ -3,6 +3,7 @@ import Base from "../Base/Base";
 import "./Home.css";
 import Row from "../../components/Home/Row";
 import { useStateValues } from "../../contexts/StateProvider";
+import { TopBar } from "../../components/TopBar";
 
 export default function Home() {
   const [{ access_token }] = useStateValues();
@@ -18,5 +19,10 @@ export default function Home() {
     );
   };
 
-  return <Base>{home()}</Base>;
+  return (
+    <Base>
+      <TopBar />
+      {home()}
+    </Base>
+  );
 }

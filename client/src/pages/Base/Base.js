@@ -17,7 +17,6 @@ export default function Base({ children }) {
   return (
     <div className="base">
       <SideBar />
-      <TopBar />
       {children}
       <Footer />
     </div>
