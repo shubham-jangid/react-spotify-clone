@@ -32,6 +32,8 @@ const redirectUrl =
     ? "http://localhost:3000/"
     : "https://spotify.shubhamjangid.in/";
 
+console.log(redirectUrl);
+
 export const AUTH_URL =
   "https://accounts.spotify.com/authorize" +
   "?response_type=code" +
