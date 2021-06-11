@@ -86,7 +86,7 @@ export default function SearchBody() {
             return (
               <Card
                 artistName={artist.name}
-                id={artist.is}
+                id={artist.id}
                 imageUrl={artist?.image?.url}
                 key={index}
                 type={"artist"}
@@ -111,6 +111,7 @@ export default function SearchBody() {
                 imageUrl={album?.image?.url}
                 key={index}
                 desc={album.artistName}
+                type={"album"}
               />
             );
           })}

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Base from "../Base/Base";
 import { useParams } from "react-router-dom";
-import { getAlbumDetails } from "../../adapters/albumRequrest";
-import "./albumBody.styles.css";
+import { getAlbumDetails } from "../../adapters/albumRequest";
+import "./AlbumBody.styles.css";
 import TrackDetails from "../../components/Track/TrackDetails";
 import PlayCircleFilledWhiteIcon from "@material-ui/icons/PlayCircleFilledWhite";
 import { useStateValues } from "../../contexts/StateProvider";

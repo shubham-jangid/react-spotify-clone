@@ -20,7 +20,7 @@ export default function TopBarUserWidget() {
         });
       })
       .catch((err) => {
-        console.log(err.response);
+        console.log(err);
       });
   }, [access_token]); // eslint-disable-line react-hooks/exhaustive-deps
 

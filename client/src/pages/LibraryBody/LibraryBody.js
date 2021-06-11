@@ -1,17 +1,16 @@
 import React from "react";
 import Base from "../Base/Base";
-import "./Home.css";
-import Row from "../../components/Home/Row";
+import "./LibraryBody.styles.css";
+import Row from "../../components/Library/Row";
 import { TopBar } from "../../components/TopBar";
 
-export default function Home() {
-  const home = () => {
+export default function LibraryBody() {
+  const body = () => {
     return (
       <div className="home">
         <Row
-          url={`browse/featured-playlists`}
           // url={`browse/featured-playlists`}
-          title={"Featured Playlists"}
+          title={"Playlists"}
         />
       </div>
     );
@@ -20,7 +19,7 @@ export default function Home() {
   return (
     <Base>
       <TopBar />
-      {home()}
+      {body()}
     </Base>
   );
 }

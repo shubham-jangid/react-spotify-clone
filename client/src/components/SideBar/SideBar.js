@@ -68,7 +68,9 @@ export default function SideBar() {
       <Link to="/search">
         <SideBarOptions title="Search" Icon={SearchIcon} />
       </Link>
-      <SideBarOptions title="Your Livrary" Icon={LibraryMusicIcon} />
+      <Link to="/collection/playlists">
+        <SideBarOptions title="Your Library" Icon={LibraryMusicIcon} />
+      </Link>
       <br />
       <SideBarOptions title="Create Playlist" Icon={PlaylistAddIcon} />
       <SideBarOptions title="Liked Songs" Icon={FavoriteIcon} />

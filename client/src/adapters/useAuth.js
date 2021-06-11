@@ -9,11 +9,14 @@ export default function useAuth(code) {
     dispatch,
   ] = useStateValues();
 
+  const serverUrl = "https://react-spotify-clone-server.herokuapp.com";
+  // "http://localhost:30001";
+
   useEffect(() => {
     if (code) {
       if (access_token) return;
       axios
-        .post("http://localhost:3001/login", { code })
+        .post(`${serverUrl}/login`, { code })
         .then((res) => {
           dispatch({
             type: "SET_ACCESS_TOKEN",

@@ -21,6 +21,10 @@
   background: #181818;
 }
 
+.card:hover {
+  background: #282828;
+}
+
 .card > img {
   height: 150px;
   width: 150px;
@@ -41,4 +45,23 @@
   font-size: 16px;
   color: #fff;
   font-weight: 700;
+}
+
+.playButton_box {
+  background-color: white;
+  transform: translate3d(124px, -100px, 10px);
+  width: 10px;
+  height: 10px;
+
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.playButton_box {
+  /* transform: scale(2); */
+}
+
+.playButton > path {
+  color: green;
 }

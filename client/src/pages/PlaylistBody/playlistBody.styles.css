@@ -39,14 +39,7 @@
 .playlist_descption > * {
   color: #fff;
 }
-.play_all {
-  background-color: rgb(64, 152, 160);
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6) 0, #121212 100%);
-  height: 232px;
-  position: relative;
-  padding-top: 40px;
-  padding-left: 40px;
-}
+
 .playlists {
   padding: 32px;
   transform: translateY(-150px);
@@ -88,6 +81,15 @@
   background-color: #80808066;
   border-radius: 2px;
 }
+.play_all {
+  background-color: rgb(64, 152, 160);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6) 0, #121212 100%);
+  height: 232px;
+  position: relative;
+  padding-top: 40px;
+  padding-left: 40px;
+  display: flex;
+}
 
 .play_button {
   transform: scale(3);
@@ -99,6 +101,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 30px;
 }
 
 .play_button:hover {

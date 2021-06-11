@@ -4,6 +4,7 @@ import "./Base.css";
 import Footer from "../../components/Footer/Footer";
 import { useStateValues } from "../../contexts/StateProvider";
 import { setRequestHeader } from "../../adapters/axiosInstance";
+import Player from "../../components/Player/Player";
 
 export default function Base({ children }) {
   const [{ access_token }] = useStateValues();
@@ -17,7 +18,7 @@ export default function Base({ children }) {
     <div className="base">
       <SideBar />
       {children}
-      <Footer />
+      {access_token ? <Player access_token={access_token} /> : <Footer />}
     </div>
   );
 }
