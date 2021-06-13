@@ -14,8 +14,6 @@ export default function useAuth(code) {
       ? "http://localhost:30001/"
       : "https://react-spotify-clone-server.herokuapp.com/";
 
-  console.log(serverUrl);
-
   useEffect(() => {
     if (code) {
       if (access_token) return;

@@ -20,8 +20,6 @@ export default function PlaylistBody() {
     if (!access_token) return;
     getPlaylistDetails(playlist_id)
       .then((res) => {
-        console.log(res);
-
         setPlaylistCoverImageUrl(res.images[0].url);
 
         setplaylistInfo(res);

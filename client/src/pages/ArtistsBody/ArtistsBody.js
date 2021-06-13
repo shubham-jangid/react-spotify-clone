@@ -12,7 +12,6 @@ import {
 } from "../../adapters/artistRequest";
 
 export default function ArtistBody() {
-  const [artistCoverImageUrl, setArtistCoverImageUrl] = useState("");
   const [artistInfo, setArtistInfo] = useState({});
   const [artistTracks, setArtistTracks] = useState([]);
   const [{ access_token }] = useStateValues();

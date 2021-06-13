@@ -63,13 +63,15 @@ export default function SideBar() {
 
   return (
     <div className="sideBar">
-      <img className="sideBar_logo" src={`${logo}`} alt="logo" />
+      <Link to="/">
+        <img className="sideBar_logo" src={`${logo}`} alt="logo" />
+      </Link>
       <Link to="/">
         <SideBarOptions title="Home" Icon={HomeIcon} />
       </Link>
-      <ConditionalLink to="/search">
+      <Link to="/search">
         <SideBarOptions title="Search" Icon={SearchIcon} />
-      </ConditionalLink>
+      </Link>
       <ConditionalLink to="/collection/playlists">
         <SideBarOptions
           title="Your Library"

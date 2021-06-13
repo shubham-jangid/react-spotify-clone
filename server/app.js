@@ -14,21 +14,16 @@ app.get("/", (req, res) => {
 
 app.post("/login", (req, res) => {
   const code = req.body.code;
-  console.log(code);
-
   const credentials = {
     clientId: process.env.CLIENTID,
     clientSecret: process.env.SECRETE,
     redirectUri: process.env.REDIRECT_URL,
   };
   const spotifyApi = new SpotifyWebApi(credentials);
-  console.log(credentials);
 
   spotifyApi
     .authorizationCodeGrant(code)
     .then((data) => {
-      console.log();
-
       res.json({
         access_token: data.body.access_token,
         expires_in: data.body.expires_in,

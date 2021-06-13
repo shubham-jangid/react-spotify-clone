@@ -14,8 +14,6 @@ export default function Row({ title }) {
     if (!access_token) return setPlaylists([]);
     getUserPlaylists()
       .then((res) => {
-        console.log(res);
-
         setPlaylists(
           res.items?.map((item) => {
             return {

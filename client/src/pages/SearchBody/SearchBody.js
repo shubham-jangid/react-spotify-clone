@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import Base from "../Base/Base";
 import "./SearchBody.styles.css";
 import { useState } from "react";
@@ -13,27 +13,33 @@ export default function SearchBody() {
   const [artists, setArtists] = useState([]);
   const [albums, setAlbums] = useState([]);
 
+  function throttle(time) {
+    let timeout;
+    return function (search) {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        searchRequests(search)
+          .then((res) => {
+            setArtistsState(res);
+            setAlbumState(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }, time);
+    };
+  }
+
+  const betterSearch = useCallback(throttle(200), []);
+
   useEffect(() => {
     if (search.length === 0) {
       setAlbums([]);
       setArtists([]);
       return;
     }
-    let cancel = false;
 
-    searchRequests(search)
-      .then((res) => {
-        if (cancel) return;
-        console.log(res);
-
-        setArtistsState(res);
-        setAlbumState(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-    return () => (cancel = true);
+    betterSearch(search);
   }, [search]);
 
   function setArtistsState(res) {

@@ -19,8 +19,6 @@ export default function AlbumBody() {
     if (!access_token) return;
     getAlbumDetails(album_id)
       .then((res) => {
-        console.log(res);
-
         setAlbumCoverImageUrl(res.images[0].url);
         setAlbumInfo(res);
       })

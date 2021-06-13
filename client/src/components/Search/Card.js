@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Card({ imageUrl, artistName, type, desc, id, key }) {
+export default function Card({ imageUrl, artistName, type, desc, id }) {
   return (
-    <Link to={`/${type}/${id}`} id={id} key={key}>
+    <Link to={`/${type}/${id}`} id={id}>
       <div className="card">
         <img
           src={imageUrl}
