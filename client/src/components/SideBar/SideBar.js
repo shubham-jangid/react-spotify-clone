@@ -16,11 +16,11 @@ import axios from "axios";
 const code = new URLSearchParams(window.location.search).get("code");
 export default function SideBar() {
   useAuth(code);
-
   const [
     { user_playlists, access_token, refresh_token },
     dispatch,
   ] = useStateValues();
+
   useEffect(() => {
     if (!access_token) return;
     setRequestHeader(access_token);
@@ -59,21 +59,38 @@ export default function SideBar() {
       });
   }, [access_token, JSON.stringify(user_playlists)]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  var ConditionalLink = access_token ? Link : "div";
+
   return (
     <div className="sideBar">
       <img className="sideBar_logo" src={`${logo}`} alt="logo" />
       <Link to="/">
         <SideBarOptions title="Home" Icon={HomeIcon} />
       </Link>
-      <Link to="/search">
+      <ConditionalLink to="/search">
         <SideBarOptions title="Search" Icon={SearchIcon} />
-      </Link>
-      <Link to="/collection/playlists">
-        <SideBarOptions title="Your Library" Icon={LibraryMusicIcon} />
-      </Link>
+      </ConditionalLink>
+      <ConditionalLink to="/collection/playlists">
+        <SideBarOptions
+          title="Your Library"
+          Icon={LibraryMusicIcon}
+          popupHeading="Enjoy Your Library"
+          popupDetail="Log in to see saved songs, podcasts, artists, and playlists in Your Library."
+        />
+      </ConditionalLink>
       <br />
-      <SideBarOptions title="Create Playlist" Icon={PlaylistAddIcon} />
-      <SideBarOptions title="Liked Songs" Icon={FavoriteIcon} />
+      <SideBarOptions
+        title="Create Playlist"
+        Icon={PlaylistAddIcon}
+        popupHeading="Create a playlist"
+        popupDetail="Log in to create and share playlists."
+      />
+      <SideBarOptions
+        title="Liked Songs"
+        Icon={FavoriteIcon}
+        popupHeading="Enjoy your Liked Songs"
+        popupDetail="Log in to see all the songs you’ve liked in one easy playlist."
+      />
       <hr />
       {user_playlists?.map((playlist, index) => (
         <SideBarOptions title={playlist.name} id={playlist.id} key={index} />

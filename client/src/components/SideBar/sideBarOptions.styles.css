@@ -7,6 +7,7 @@
   font-weight: 700;
   padding: 0 20px;
   align-items: center;
+  position: relative;
 }
 a {
   text-decoration: none;
@@ -30,6 +31,14 @@ a {
   background-color: #282828;
   color: #fff;
 }
+
+.sideBarOption:focus > .popup_container {
+  display: flex;
+}
+.sideBarOption:focus-within > .popup_container {
+  display: flex;
+}
+
 .sideBarOption:hover .sideBarOption_icon > path,
 .sideBarOption:hover .title {
   color: white;
