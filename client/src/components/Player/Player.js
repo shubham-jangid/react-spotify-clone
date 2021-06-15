@@ -6,6 +6,7 @@ export default function Player({ access_token }) {
   return (
     <div className="player">
       {/* <SpotifyPlayer token={access_token} />; */}
+      spotify player
     </div>
   );
 }

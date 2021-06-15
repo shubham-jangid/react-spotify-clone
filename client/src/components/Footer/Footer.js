@@ -1,6 +1,5 @@
 import React from "react";
 import { useStateValues } from "../../contexts/StateProvider";
-import Player from "../Player/Player";
 import "./footer.styles.css";
 export default function Footer() {
   const [{ access_token }] = useStateValues();
@@ -19,5 +18,5 @@ export default function Footer() {
       </div>
     );
   }
-  return <>{access_token ? <Player /> : footer()}</>;
+  return <>{!access_token && footer()}</>;
 }

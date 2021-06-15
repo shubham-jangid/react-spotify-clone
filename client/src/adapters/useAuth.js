@@ -4,10 +4,7 @@ import { useStateValues } from "../contexts/StateProvider";
 import { setRequestHeader } from "./axiosInstance";
 
 export default function useAuth(code) {
-  const [
-    { access_token, expires_in, refresh_token },
-    dispatch,
-  ] = useStateValues();
+  const [{ access_token }, dispatch] = useStateValues();
 
   const serverUrl =
     process.env.NODE_ENV === "development"

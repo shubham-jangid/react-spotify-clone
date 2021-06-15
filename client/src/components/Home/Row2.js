@@ -2,25 +2,23 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import "./Row.styles.css";
-import { getSongs } from "../../adapters/homeRequests";
 import { useStateValues } from "../../contexts/StateProvider";
+import { getCategoryPlaylists } from "../../adapters/getCategoryPlaylists";
+import Card from "../Search/Card";
+import { Link } from "react-router-dom";
 import PlayCircleFilledWhiteIcon from "@material-ui/icons/PlayCircleFilledWhite";
 
-import { Link } from "react-router-dom";
-
-export default function Row({ title, url, limit }) {
-  const [songs, setSongs] = useState([]);
+export default function Row2({ title, limit, id }) {
+  const [categoryPlaylists, setcategoryPlaylists] = useState([]);
   const [{ access_token }] = useStateValues();
 
   useEffect(() => {
     if (!access_token) return;
-    if (!url) return;
-
-    getSongs({ url, limit })
+    getCategoryPlaylists(id, limit)
       .then((res) => {
         console.log(res);
-        setSongs(
-          res.playlists.items.map((item) => {
+        setcategoryPlaylists(
+          res.playlists.items?.map((item) => {
             return {
               id: item.id,
               name: item.name,
@@ -33,24 +31,30 @@ export default function Row({ title, url, limit }) {
       .catch((err) => {
         console.log(err);
       });
-  }, [access_token, url, limit]);
+  }, [access_token, limit]);
 
   return (
     <div className="row">
       <h2 className="row_title"> {title}</h2>
-      <div className="inner_row">
-        {songs?.map((song, index) => {
+      <div className="inner_row ">
+        {categoryPlaylists?.map((categoryPlaylist, index) => {
           return (
-            <Link to={`playlist/${song.id}`} id={song.id} key={index}>
+            <Link
+              to={`playlist/${categoryPlaylist.id}`}
+              id={categoryPlaylist.id}
+              key={index}
+            >
               <div className="card">
                 <div className="image">
-                  <img src={song.image.url} alt="poster" />
+                  <img src={categoryPlaylist.image.url} alt="poster" />
                   <div className="playButton_box">
                     <PlayCircleFilledWhiteIcon className="playButton" />
                   </div>
                 </div>
-                <div className="card_title">{song.name}</div>
-                <div className="card_description">{song.description}</div>
+                <div className="card_title">{categoryPlaylist.name}</div>
+                <div className="card_description">
+                  {categoryPlaylist.description}
+                </div>
               </div>
             </Link>
           );

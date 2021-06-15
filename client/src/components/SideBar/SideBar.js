@@ -21,6 +21,11 @@ export default function SideBar() {
     dispatch,
   ] = useStateValues();
 
+  const serverUrl =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:30001/"
+      : "https://react-spotify-clone-server.herokuapp.com/";
+
   useEffect(() => {
     if (!access_token) return;
     setRequestHeader(access_token);
@@ -33,7 +38,7 @@ export default function SideBar() {
       })
       .catch((err) => {
         axios
-          .post("http://localhost:3001/refreshtoken", { refresh_token })
+          .post(`${serverUrl}refreshtoken`, { refresh_token })
           .then((res) => {
             dispatch({
               type: "SET_ACCESS_TOKEN",

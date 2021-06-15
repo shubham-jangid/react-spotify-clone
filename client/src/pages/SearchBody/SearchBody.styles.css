@@ -11,3 +11,8 @@
   transform: translateY(-60px);
   padding-top: 60px;
 }
+
+.categories_row {
+  flex-wrap: wrap;
+  justify-content: center;
+}

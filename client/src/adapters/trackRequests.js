@@ -1,7 +1,10 @@
 import axios from "./axiosInstance";
 
 export const getTrackDetails = (trackId) => {
-  if (!trackId) return "playlist id not provided";
+  if (!trackId) {
+    console.log("track id not provided");
+    return;
+  }
   return axios
     .get(`/tracks/${trackId}`)
     .then((res) => {

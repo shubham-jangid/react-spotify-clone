@@ -10,3 +10,14 @@ export const searchRequests = (search) => {
       console.log(err);
     });
 };
+
+export const searchCatagories = () => {
+  return axios
+    .get("browse/categories?country=in")
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};

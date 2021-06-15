@@ -6,6 +6,7 @@ import SearchBody from "./pages/SearchBody/SearchBody";
 import AlbumBody from "./pages/AlbumBody/AlbumBody";
 import ArtistBody from "./pages/ArtistsBody/ArtistsBody";
 import LibraryBody from "./pages/LibraryBody/LibraryBody";
+import CategoryPlaylistsBody from "./pages/CategoryPlaylistsBody/CategoryPlaylistsBody";
 
 export default function Routes() {
   return (
@@ -13,10 +14,14 @@ export default function Routes() {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/playlist/:id" component={PlaylistBody} />
-        <Route path="/search/" component={SearchBody} />
+        <Route path="/search" component={SearchBody} />
         <Route path="/album/:id" component={AlbumBody} />
         <Route path="/artist/:id" component={ArtistBody} />
         <Route path="/collection/playlists" component={LibraryBody} />
+        <Route
+          path="/category-playlists/:id"
+          component={CategoryPlaylistsBody}
+        />
       </Switch>
     </BrowserRouter>
   );

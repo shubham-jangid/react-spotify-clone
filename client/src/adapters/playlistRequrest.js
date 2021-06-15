@@ -1,10 +1,15 @@
 import axios from "./axiosInstance";
 
 export const getPlaylistDetails = (playlistId) => {
-  if (!playlistId) return "playlist id not provided";
+  if (!playlistId) {
+    console.log("playlist id not provided");
+    return;
+  }
   return axios
     .get(`/playlists/${playlistId}`)
     .then((res) => {
+      console.log(res);
+
       return res.data;
     })
     .catch((err) => {

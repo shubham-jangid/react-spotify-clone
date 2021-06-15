@@ -1,7 +1,10 @@
 import axios from "./axiosInstance";
 
 export const getAlbumDetails = (albumId) => {
-  if (!albumId) return "album id not provided";
+  if (!albumId) {
+    console.log("album id not provided");
+    return;
+  }
   return axios
     .get(`/albums/${albumId}`)
     .then((res) => {

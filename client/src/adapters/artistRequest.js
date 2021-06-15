@@ -1,7 +1,10 @@
 import axios from "./axiosInstance";
 
 export const getArtistDetails = (artistId) => {
-  if (!artistId) return "album id not provided";
+  if (!artistId) {
+    console.log("album id not provided");
+    return;
+  }
   return axios
     .get(`/artists/${artistId}/`)
     .then((res) => {
@@ -13,7 +16,10 @@ export const getArtistDetails = (artistId) => {
 };
 
 export const getArtistTopTracks = (artistId) => {
-  if (!artistId) return "album id not provided";
+  if (!artistId) {
+    console.log("album id not provided");
+    return;
+  }
   return axios
     .get(`/artists/${artistId}/top-tracks?market=es`)
     .then((res) => {

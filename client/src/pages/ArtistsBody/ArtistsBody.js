@@ -25,7 +25,7 @@ export default function ArtistBody() {
     getArtistDetails(artist_id)
       .then((res) => {
         setArtistInfo({
-          imageUrl: res.images[0].url,
+          image_url: res.images[0].url,
           name: res.name,
           followers: res.followers.total,
           type: res.type,
@@ -53,7 +53,7 @@ export default function ArtistBody() {
             );
 
             return {
-              imageUrl: smallestImage.url,
+              image_url: smallestImage.url,
               title: track.name,
               duration: (track.duration_ms / 60000).toFixed(2),
               id: track.id,
@@ -71,7 +71,7 @@ export default function ArtistBody() {
       <div className="artist_body">
         <div className="artist_info">
           <div className="artist_info_image">
-            <img src={artistInfo.imageUrl} alt="cover " />
+            <img src={artistInfo.image_url} alt="cover " />
           </div>
           <div className="artist_descption">
             <h5 className="type">{artistInfo.type}</h5>
@@ -98,7 +98,7 @@ export default function ArtistBody() {
             return (
               <TrackDetails
                 index={index + 1}
-                imageUrl={track.imageUrl}
+                image_url={track.image_url}
                 title={track.name}
                 duration={track.duration}
                 key={index}

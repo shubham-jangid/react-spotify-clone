@@ -4,7 +4,10 @@ import "./SearchBody.styles.css";
 import { useState } from "react";
 import { TopBar } from "../../components/TopBar";
 import SearchBar from "../../components/TopBar/SearchBar.";
-import { searchRequests } from "../../adapters/searchRequests.js";
+import {
+  searchRequests,
+  searchCatagories,
+} from "../../adapters/searchRequests.js";
 import Card from "../../components/Search/Card";
 // import "../../components/home/Row.styles.css";
 import "../../components/Home/Row.styles.css";
@@ -12,6 +15,7 @@ export default function SearchBody() {
   const [search, setSearch] = useState("");
   const [artists, setArtists] = useState([]);
   const [albums, setAlbums] = useState([]);
+  const [categories, setcategories] = useState([]);
 
   function throttle(time) {
     let timeout;
@@ -38,9 +42,26 @@ export default function SearchBody() {
       setArtists([]);
       return;
     }
-
     betterSearch(search);
   }, [search]);
+
+  useEffect(() => {
+    searchCatagories()
+      .then((res) => {
+        setcategories(
+          res.categories.items?.map((item) => {
+            return {
+              id: item.id,
+              name: item.name,
+              image: item.icons[0],
+            };
+          })
+        );
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   function setArtistsState(res) {
     setArtists(
@@ -91,9 +112,9 @@ export default function SearchBody() {
           {artists?.map((artist, index) => {
             return (
               <Card
-                artistName={artist.name}
+                artist_name={artist.name}
                 id={artist.id}
-                imageUrl={artist?.image?.url}
+                image_url={artist?.image?.url}
                 key={index}
                 type={"artist"}
               />
@@ -112,9 +133,9 @@ export default function SearchBody() {
           {albums?.map((album, index) => {
             return (
               <Card
-                artistName={album.name}
+                artist_name={album.name}
                 id={album.id}
-                imageUrl={album?.image?.url}
+                image_url={album?.image?.url}
                 key={index}
                 desc={album.artistName}
                 type={"album"}
@@ -126,11 +147,42 @@ export default function SearchBody() {
     );
   }
 
+  function ShowCategories() {
+    return (
+      <div className="row">
+        <h2 className="row_title"> Browse All</h2>
+
+        <div className="inner_row categories_row">
+          {categories?.map((categorie, index) => {
+            return (
+              <Card
+                artist_name={categorie.name}
+                id={categorie.id}
+                image_url={categorie?.image?.url}
+                key={index}
+                type={"category-playlists"}
+              />
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
+
   function searchBody() {
     return (
       <div className="searchBody">
-        <ArtistsRow />
-        <AlbumRow />
+        {search ? (
+          <>
+            <ArtistsRow />
+            <AlbumRow />
+          </>
+        ) : (
+          <ShowCategories />
+        )}
+        {/* <ArtistsRow />
+         <AlbumRow />
+        <ShowCategories /> */}
       </div>
     );
   }

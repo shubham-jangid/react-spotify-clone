@@ -17,7 +17,7 @@ export default function Row({ title }) {
         setPlaylists(
           res.items?.map((item) => {
             return {
-              imageUrl: item.images[0]?.url,
+              image_url: item.images[0]?.url,
               owner: item.owner.display_name,
               name: item.name,
               id: item.id,
@@ -38,7 +38,7 @@ export default function Row({ title }) {
           return (
             <Link to={`/playlist/${item?.id}`} id={item?.id} key={index}>
               <div className="card">
-                <img src={item?.imageUrl} alt="poster" />
+                <img src={item?.image_url} alt="poster" />
                 <div className="card_title">{item.name}</div>
                 <div className="card_description">by {item.owner}</div>
               </div>

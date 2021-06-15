@@ -16,7 +16,10 @@ export default function TrackDetails({
   const [trackName, setTrackName] = useState([]);
 
   useEffect(() => {
-    if (!trackId) return "track id not provided";
+    if (!trackId) {
+      console.log("track id not provided");
+      return;
+    }
     getTrackDetails(trackId)
       .then((res) => {
         setTrackImageUrl(res.album.images[res.album.images.length - 1].url);
