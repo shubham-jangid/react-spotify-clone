@@ -4,11 +4,11 @@ import { useEffect } from "react";
 import "./Row.styles.css";
 import { useStateValues } from "../../contexts/StateProvider";
 import { getCategoryPlaylists } from "../../adapters/getCategoryPlaylists";
-import Card from "../Search/Card";
 import { Link } from "react-router-dom";
 import PlayCircleFilledWhiteIcon from "@material-ui/icons/PlayCircleFilledWhite";
+import Popup from "../Popup/Popup";
 
-export default function Row2({ title, limit, id }) {
+export default function Row2({ title, limit, id, defaultData }) {
   const [categoryPlaylists, setcategoryPlaylists] = useState([]);
   const [{ access_token }] = useStateValues();
 
@@ -16,7 +16,6 @@ export default function Row2({ title, limit, id }) {
     if (!access_token) return;
     getCategoryPlaylists(id, limit)
       .then((res) => {
-        console.log(res);
         setcategoryPlaylists(
           res.playlists.items?.map((item) => {
             return {
@@ -33,18 +32,22 @@ export default function Row2({ title, limit, id }) {
       });
   }, [access_token, limit]);
 
+  let playlists = [];
+  access_token ? (playlists = categoryPlaylists) : (playlists = defaultData);
+  var ConditionalLink = access_token ? Link : "div";
+
   return (
     <div className="row">
       <h2 className="row_title"> {title}</h2>
       <div className="inner_row ">
-        {categoryPlaylists?.map((categoryPlaylist, index) => {
+        {playlists?.map((categoryPlaylist, index) => {
           return (
-            <Link
+            <ConditionalLink
               to={`playlist/${categoryPlaylist.id}`}
               id={categoryPlaylist.id}
               key={index}
             >
-              <div className="card">
+              <div className="card" tabIndex="1">
                 <div className="image">
                   <img src={categoryPlaylist.image.url} alt="poster" />
                   <div className="playButton_box">
@@ -55,10 +58,22 @@ export default function Row2({ title, limit, id }) {
                 <div className="card_description">
                   {categoryPlaylist.description}
                 </div>
+                {!access_token && (
+                  <Popup
+                    popupDetail={"Please login to play songs"}
+                    popupHeading={"login"}
+                  />
+                )}
               </div>
-            </Link>
+            </ConditionalLink>
           );
         })}
+        {/* {!access_token && (
+          <Popup
+            popupDetail={"Please login to play songs"}
+            popupHeading={"login"}
+          />
+        )} */}
       </div>
     </div>
   );

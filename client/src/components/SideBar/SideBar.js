@@ -74,9 +74,14 @@ export default function SideBar() {
       <Link to="/">
         <SideBarOptions title="Home" Icon={HomeIcon} />
       </Link>
-      <Link to="/search">
-        <SideBarOptions title="Search" Icon={SearchIcon} />
-      </Link>
+      <ConditionalLink to="/search">
+        <SideBarOptions
+          title="Search"
+          Icon={SearchIcon}
+          popupHeading="Want to search Your song"
+          popupDetail="Log in to search  songs, podcasts, artists, and playlists."
+        />
+      </ConditionalLink>
       <ConditionalLink to="/collection/playlists">
         <SideBarOptions
           title="Your Library"
@@ -86,18 +91,22 @@ export default function SideBar() {
         />
       </ConditionalLink>
       <br />
-      <SideBarOptions
-        title="Create Playlist"
-        Icon={PlaylistAddIcon}
-        popupHeading="Create a playlist"
-        popupDetail="Log in to create and share playlists."
-      />
-      <SideBarOptions
-        title="Liked Songs"
-        Icon={FavoriteIcon}
-        popupHeading="Enjoy your Liked Songs"
-        popupDetail="Log in to see all the songs you’ve liked in one easy playlist."
-      />
+      {!access_token && (
+        <>
+          <SideBarOptions
+            title="Create Playlist"
+            Icon={PlaylistAddIcon}
+            popupHeading="Create a playlist"
+            popupDetail="Log in to create and share playlists."
+          />
+          <SideBarOptions
+            title="Liked Songs"
+            Icon={FavoriteIcon}
+            popupHeading="Enjoy your Liked Songs"
+            popupDetail="Log in to see all the songs you’ve liked in one easy playlist."
+          />
+        </>
+      )}
       <hr />
       {user_playlists?.map((playlist, index) => (
         <SideBarOptions title={playlist.name} id={playlist.id} key={index} />

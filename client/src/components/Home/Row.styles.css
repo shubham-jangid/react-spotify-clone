@@ -75,3 +75,10 @@
 .playButton > path {
   color: green;
 }
+
+.card:focus .popup_container {
+  display: flex;
+}
+.card:focus-within .popup_container {
+  display: flex;
+}

@@ -17,8 +17,6 @@ export default function CategoryPlaylistsBody() {
     if (!access_token) return;
     getCategoryPlaylists(id)
       .then((res) => {
-        console.log(res);
-
         setcategoryPlaylists(
           res.playlists.items?.map((item) => {
             return {

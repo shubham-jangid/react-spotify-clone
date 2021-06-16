@@ -18,7 +18,6 @@ export default function Row({ title, url, limit }) {
 
     getSongs({ url, limit })
       .then((res) => {
-        console.log(res);
         setSongs(
           res.playlists.items.map((item) => {
             return {

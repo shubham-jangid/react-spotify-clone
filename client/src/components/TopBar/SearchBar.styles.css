@@ -1,0 +1,30 @@
+.searchBar-div {
+  min-width: 200px;
+  display: flex;
+  flex-grow: 1;
+  height: 40px;
+  width: 100%;
+}
+.searchBar {
+  flex-grow: 1;
+  height: 40px;
+  max-width: 350px;
+  border-radius: 20px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  text-overflow: ellipsis;
+}
+
+.searchBar > input {
+  flex-grow: 1;
+  max-width: 300px;
+  padding: 6px 20px;
+  border-radius: 20px;
+  outline: none;
+  color: rgb(34, 34, 34);
+  border: none;
+  text-overflow: ellipsis;
+}

@@ -7,8 +7,6 @@ export function getSongs({ url, limit, id }) {
   return axios
     .get(`${url}?limit=${limit}`)
     .then((res) => {
-      console.log(res);
-
       return res.data;
     })
     .catch((err) => {

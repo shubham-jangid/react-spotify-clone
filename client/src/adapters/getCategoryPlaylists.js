@@ -1,7 +1,6 @@
 import axios from "./axiosInstance";
 
 export const getCategoryPlaylists = (categoryId, limit) => {
-  console.log(categoryId);
   let url = "";
   if (!categoryId) {
     console.log("category id not provided");
