@@ -14,7 +14,11 @@ export default function Footer() {
             credit card needed.
           </p>
         </div>
-        <button className="footer__button">SIGN UP FREE</button>
+        <button className="footer__button">
+          <a href="https://www.spotify.com/in-en/signup/?forward_url=https%3A%2F%2Fopen.spotify.com%2F">
+            SIGN UP FREE
+          </a>
+        </button>
       </div>
     );
   }
