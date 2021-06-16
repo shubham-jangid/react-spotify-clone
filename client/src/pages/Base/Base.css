@@ -3,4 +3,5 @@
   grid-template-columns: 225px 1fr;
   grid-template-rows: 60px;
   height: 100vh;
+  overflow-x: auto;
 }

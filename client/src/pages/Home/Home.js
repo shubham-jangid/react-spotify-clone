@@ -18,36 +18,36 @@ export default function Home() {
             <Row
               url={`browse/featured-playlists`}
               title={"Featured Playlists"}
-              limit="8"
+              limit="9"
             />
           )}
           <Row2
             title={"bollywood"}
-            limit="8"
+            limit="9"
             id="bollywood"
             defaultData={defaultData[0]}
           />
           <Row2
             title={"punjabi"}
-            limit="8"
+            limit="9"
             id="punjabi"
             defaultData={defaultData[1]}
           />
           <Row2
             title={"romance"}
-            limit="8"
+            limit="9"
             id="romance"
             defaultData={defaultData[2]}
           />
           <Row2
             title={"devotional"}
-            limit="8"
+            limit="9"
             id="devotional"
             defaultData={defaultData[3]}
           />
           <Row2
             title={"at home "}
-            limit="8"
+            limit="9"
             id="at_home"
             defaultData={defaultData[4]}
           />
