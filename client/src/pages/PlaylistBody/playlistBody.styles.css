@@ -3,6 +3,7 @@
   overflow-y: scroll;
   background-color: #121212;
   transform: translateY(-60px);
+  min-width: 1000px;
   /* height: calc(100vh - 20px); */
 }
 .playlist_info {
