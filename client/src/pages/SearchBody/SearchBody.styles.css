@@ -1,14 +1,12 @@
 .searchBody {
   color: #fff;
   overflow-y: scroll;
-
   background-color: #121212;
   padding: 10px;
-  overflow-y: auto;
-  -ms-overflow-style: none;
   background: #1e1e1e;
   background: linear-gradient(to bottom, #1e1e1e, #121212);
-  transform: translateY(-60px);
+  position: relative;
+  top: -60px;
   padding-top: 60px;
 }
 
