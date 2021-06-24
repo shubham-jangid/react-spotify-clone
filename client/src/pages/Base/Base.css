@@ -1,7 +1,20 @@
 .base {
   display: grid;
-  grid-template-columns: 225px 1fr;
+  grid-template-columns: 220px 1fr;
   grid-template-rows: 60px;
   height: 100vh;
+  position: relative;
+  overflow-y: hidden;
   overflow-x: auto;
+}
+
+/* hide scrollbar but allow scrolling */
+.base {
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+  overflow-y: scroll;
+}
+
+.base::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
 }

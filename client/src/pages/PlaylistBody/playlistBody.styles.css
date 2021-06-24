@@ -2,9 +2,22 @@
   color: #fff;
   overflow-y: scroll;
   background-color: #121212;
-  transform: translateY(-60px);
+  position: relative;
+  top: -60px;
+  /* height: 100vh; */
   /* height: calc(100vh - 20px); */
 }
+/* 
+.playlist_body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow-y: scroll;
+}
+
+.playlist_body::-webkit-scrollbar {
+  display: none;
+} */
+
 .playlist_info {
   height: 30vh;
   max-height: 500px;

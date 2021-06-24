@@ -52,7 +52,6 @@ export default function Home() {
             defaultData={defaultData[4]}
           />
         </>
-        {/* )} */}
       </div>
     );
   };
