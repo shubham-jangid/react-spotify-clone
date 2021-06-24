@@ -6,10 +6,8 @@
   padding: 10px 30px;
   min-width: 1020px;
   display: flex;
-
   justify-content: space-between;
   background-image: linear-gradient(90deg, #af2896, #509bf5);
-  min-width: 1000px;
 }
 
 .footer__content {
